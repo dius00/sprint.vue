@@ -11,9 +11,11 @@
       <allPhotos
         v-if="fullView"
         :photos="photos"
+        :selectedPhoto="selectedPhoto"
+        :fullView="fullView"
         v-on:singlePhotoClick="switchView"
       />
-      <singlePhoto v-else :image="photos[selectedPhoto]" />
+      <singlePhoto v-else :photos="photos" :selectedPhoto="selectedPhoto" />
     </div>
   </div>
 </template>
@@ -35,7 +37,7 @@ export default {
     title: "CC Photo Library",
     fullView: true,
     photos: [],
-    selectedPhoto: -1,
+    selectedPhoto: "",
   }),
   methods: {
     defaultView() {
@@ -50,10 +52,8 @@ export default {
     },
   },
   created: async function() {
-    const list = (await listObjects()).map((file) => file.Key);
-    for (let key of list) {
-      this.photos.push(await getSingleObject(key));
-    }
+    this.photos = (await listObjects()).map((file) => file.Key);
+    console.log(this.photos)
   },
 };
 </script>

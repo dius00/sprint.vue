@@ -19,7 +19,7 @@ const bucket = new AWS.S3({
 export function listObjects() {
   console.log("listing objects");
   const listObjects = new Promise(resolve => {
-    bucket.listObjects({MaxKeys :10}, (error, data) => {
+    bucket.listObjects( (error, data) => {
       if (error) {
         console.error("error: ", error);
         return;

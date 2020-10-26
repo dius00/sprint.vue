@@ -1,13 +1,13 @@
 <template>
   <div class="singleFrame">
-    <img class="singleImage" :src="`data:image/;base64,` + image" />
+    <img class="singleImage" :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + selectedPhoto" />
   </div>
 </template>
 
 <script>
 export default {
   name: "SinglePhoto",
-  props: ["image"],
+  props: ["selectedPhoto"],
 };
 </script>
 

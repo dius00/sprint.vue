@@ -4,8 +4,8 @@
       <div class="photoContainer">
         <img
           class="image"
-          :src="`data:image/;base64,` + photo"
-          @click="single(index)"
+          :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + photo"
+          @click="single(photo)"
         />
       </div>
     </div>
@@ -15,10 +15,14 @@
 <script>
 export default {
   name: "AllPhotos",
-  props: ["photos"],
+  props: ["photos",
+  "selectedPhoto",
+  "fullView"],
   methods: {
-    single(index) {
-      this.$emit("singlePhotoClick", index);
+    single(photo) {
+      this.selectedPhoto = photo
+      this.fullView = false
+      this.$emit("singlePhotoClick", this.selectedPhoto, this.fullView);
     },
   },
 };
