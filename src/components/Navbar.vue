@@ -12,14 +12,23 @@
 
 <script>
 import Upload from "./Upload";
+import { listObjects } from "../../utils/index.js";
 export default {
   name: "Navbar",
   components: {
     upload: Upload,
   },
+  props: ["photos", "fullview", "scrollPosition"],
   methods: {
     invert() {
-      this.$emit("invert");
+      listObjects().then((data) => {
+        this.photos = data;
+        this.fullView = false;
+        this.fullView = true;
+        console.log(this.scrollPosition);
+        window.scrollTo(this.scrollPosition.x, this.scrollPosition.y);
+      });
+      this.$emit("invert", this.photos, this.fullView, this.scrollPosition);
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="singleFrame">
-    <img class="singleImage" :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + selectedPhoto" />
+    <img class="singleImage" :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + selectedPhoto.Key" />
   </div>
 </template>
 

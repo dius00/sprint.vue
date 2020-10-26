@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <navbar v-on:invert="defaultView" v-on:fileUploaded="appendPhoto" />
+    <navbar
+      v-on:invert="defaultView"
+      :photos="photos"
+      :fullView="fullView"
+      :scrollPosition="scrollPosition"
+      v-on:fileUploaded="appendPhoto"
+    />
     <a href="#top">Back to top</a>
     <div v-if="photos.length === 0">
       <img
@@ -12,10 +18,10 @@
         v-if="fullView"
         :photos="photos"
         :selectedPhoto="selectedPhoto"
-        :fullView="fullView"
+        :scrollPosition="scrollPosition"
         v-on:singlePhotoClick="switchView"
       />
-      <singlePhoto v-else :photos="photos" :selectedPhoto="selectedPhoto" />
+      <singlePhoto v-else :selectedPhoto="selectedPhoto" />
     </div>
   </div>
 </template>
@@ -38,6 +44,7 @@ export default {
     fullView: true,
     photos: [],
     selectedPhoto: "",
+    scrollPosition: {},
   }),
   methods: {
     defaultView() {
@@ -46,14 +53,14 @@ export default {
     switchView(index) {
       this.fullView = false;
       this.selectedPhoto = index;
+      this.scrollPosition = {x: window.scrollX, y: window.scrollY};
     },
     async appendPhoto(filename) {
       this.photos.push(await getSingleObject(filename));
     },
   },
   created: async function() {
-    this.photos = (await listObjects()).map((file) => file.Key);
-    console.log(this.photos)
+    this.photos = await listObjects();
   },
 };
 </script>

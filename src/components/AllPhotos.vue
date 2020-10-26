@@ -4,7 +4,7 @@
       <div class="photoContainer">
         <img
           class="image"
-          :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + photo"
+          :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + photo.Key"
           @click="single(photo)"
         />
       </div>
@@ -15,14 +15,13 @@
 <script>
 export default {
   name: "AllPhotos",
-  props: ["photos",
-  "selectedPhoto",
-  "fullView"],
+  props: ["photos", "selectedPhoto", "scrollPosition"],
   methods: {
     single(photo) {
-      this.selectedPhoto = photo
-      this.fullView = false
-      this.$emit("singlePhotoClick", this.selectedPhoto, this.fullView);
+      this.selectedPhoto = photo;
+      this.scrollPosition = {x: window.scrollX, y: window.scrollY}
+      console.log(this.scrollPosition)
+      this.$emit("singlePhotoClick", this.selectedPhoto, this.scrollPosition);
     },
   },
 };
