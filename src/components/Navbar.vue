@@ -1,7 +1,7 @@
 <template>
 <div id="navbar">
-  <h1 id="navbar-header" @click="changeView">Go Home</h1>
-  <upload/>
+  <h1 id="navbar-header" @click="invert">Go Home</h1>
+  <upload v-on="$listeners"/>
 </div>
 </template>
 
@@ -12,12 +12,9 @@ export default {
   components: {
     upload: Upload
   },
-  props: ["value"],
   methods: {
-  changeView() {
+  invert() {
     this.$emit("invert");
-    /*this.AllPhotos = !this.AllPhotos;
-    console.log(this.AllPhotos);*/
   }
   }
 };

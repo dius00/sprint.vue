@@ -1,7 +1,7 @@
 <template>
 <div>
- <button @click="upload">Upload</button>
- <input type="file" ref="input"/>
+ <button @click="fileSelect">Upload</button>
+ <input type="file" ref="input" @change="upload"/>
  </div>
 </template>
 
@@ -10,10 +10,13 @@ import {saveObject} from "../../utils/index.js"
 export default {
   name: "Upload",
   methods: {
+  fileSelect() {
+      this.$refs.input.click();
+    },
   upload(){
-    this.$refs.input.click();
     const file = this.$refs.input.files[0];
-    console.log(file);
+    saveObject(file);
+    this.$emit("fileUploaded", file.name);
     }
   }
 };

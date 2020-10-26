@@ -1,10 +1,13 @@
 <template>
-  <div />
+  <div>
+    <img :src="`data:image/;base64,` + image">
+  </div>
 </template>
 
 <script>
 export default {
-  name: "SinglePhoto"
+  name: "SinglePhoto",
+  props: ["image"],
 };
 </script>
 
