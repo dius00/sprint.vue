@@ -1,8 +1,8 @@
 <template>
   <div id="app">
+    <navbar />
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>{{ title }}</h1>
-    <navbar />
   </div>
 </template>
 
@@ -15,13 +15,13 @@ export default {
     navbar: Navbar
   },
   data: () => ({
-    title: "Photo Upload App"
+    title: "CC Photo Library"
   })
 };
 </script>
 
-<style>
-#app {
+<style scoped>
+/* #app {
   text-align: center;
-}
+} */
 </style>
