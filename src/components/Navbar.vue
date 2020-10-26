@@ -1,22 +1,27 @@
 <template>
-<div id="navbar">
-  <h1 id="navbar-header" @click="invert">Go Home</h1>
-  <upload v-on="$listeners"/>
-</div>
+  <div id="navbar">
+    <h1 id="navbar-header" @click="invert">Go Home</h1>
+    <img
+      class="topLogo"
+      src="https://pbs.twimg.com/profile_images/1281073106711310337/lJkvgoyy_400x400.png"
+    />
+    <h2 class="topTitle">CC Photo Library</h2>
+    <upload v-on="$listeners" />
+  </div>
 </template>
 
 <script>
-import Upload from "./Upload"
+import Upload from "./Upload";
 export default {
   name: "Navbar",
   components: {
-    upload: Upload
+    upload: Upload,
   },
   methods: {
-  invert() {
-    this.$emit("invert");
-  }
-  }
+    invert() {
+      this.$emit("invert");
+    },
+  },
 };
 </script>
 
@@ -34,5 +39,18 @@ export default {
   background-color: #1c7e88;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(255, 255, 255);
+}
+.topLogo {
+  margin-top: auto;
+  display: flex;
+  height: 100px;
+}
+
+.topTitle {
+  display: inline;
+  margin-right: auto;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
 }
 </style>
