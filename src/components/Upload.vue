@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="fileSelect">Upload</button>
-    <input type="file" ref="input" @change="upload" />
+    <input type="file" ref="input" @change="upload" multiple />
   </div>
 </template>
 
@@ -14,9 +14,12 @@ export default {
       this.$refs.input.click();
     },
     upload() {
-      const file = this.$refs.input.files[0];
-      saveObject(file);
-      this.$emit("fileUploaded", file.name);
+      for (let i = 0; i < this.$refs.input.files.length; i++) {
+        saveObject(this.$refs.input.files[i])
+      console.log('here');
+      }
+      alert(`${this.$refs.input.files.length} file(s) uploaded`)
+      this.$emit("fileUploaded");
     },
   },
 };
@@ -25,12 +28,5 @@ export default {
 <style scope>
 input {
   display: none;
-}
-button {
-  cursor: pointer;
-  margin-top: auto;
-  margin-bottom: auto;
-  cursor: pointer;
-  font-size: 20px;
 }
 </style>
