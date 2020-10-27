@@ -5,6 +5,7 @@
         <img
           class="image"
           :src="`https://s3-ap-northeast-1.amazonaws.com/react.sprint/` + photo.Key"
+          :alt="photo.Key"
           @click="single(photo)"
         />
       </div>
@@ -40,16 +41,22 @@ export default {
   width: 400px;
   height: 400px;
   margin: 20px;
+  transition: transform .2s; /* Animation */
   overflow: hidden;
 }
+.photoContainer:hover {
+  transform: scale(1.2);
+}
+
 .photoContainer > .image {
   position: absolute;
   max-width: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+
 }
 .image:hover {
-  cursor: pointer;
+  cursor: zoom-in;
 }
 </style>

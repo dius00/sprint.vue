@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 #navbar-header {
   cursor: pointer;
   margin-top: auto;
@@ -43,8 +43,8 @@ export default {
 }
 #navbar {
   padding: 2rem;
+  position: relative;
   display: flex;
-  justify-content: flex-end;
   background-color: #1c7e88;
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(255, 255, 255);
@@ -58,8 +58,16 @@ export default {
 .topTitle {
   display: inline;
   margin-right: auto;
-
   font-family: Arial, Helvetica, sans-serif;
   font-size: 35px;
+}
+
+button {
+  position: absolute;
+  cursor: pointer;
+  font-size: 20px;
+  top: 50%;
+  left: 93%;
+  transform: translate(-50%,-50%);
 }
 </style>

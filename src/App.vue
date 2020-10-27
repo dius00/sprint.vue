@@ -56,7 +56,7 @@ export default {
       this.scrollPosition = {x: window.scrollX, y: window.scrollY};
     },
     async appendPhoto(filename) {
-      this.photos.push(await getSingleObject(filename));
+      this.photos = await listObjects();
     },
   },
   created: async function() {
@@ -79,6 +79,7 @@ a {
   color: #1c7e88;
   margin-bottom: 30px;
   margin-right: 30px;
+  z-index: 2;
 }
 navbar {
   margin-bottom: 10px;
